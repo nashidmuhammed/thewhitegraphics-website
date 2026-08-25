@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description"
+    content="White Graphics Portfolio — Explore 60+ projects across 3D corporate signage, luxury commercial printing, vehicle fleet wraps, trade show exhibition booths, and industrial nameplates in Saudi Arabia.">
+  <title>Our Works & Portfolio | White Graphics Advertising Co.</title>
+  <link rel="icon" type="image/png" href="images/wg_logo_white.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              cyan: '#00A8E8',
+              'cyan-dark': '#007EA7',
+              yellow: '#FFB703',
+              dark: '#070C16',
+              card: 'rgba(15, 23, 42, 0.75)',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-15px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.8' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Styling for Rich Visuals & Smooth Glows */
+    body {
+      background-color: #070C16;
+      color: #f1f5f9;
+      cursor: default;
+    }
+
+    /* Custom Cursor Styles */
+    #cursor-dot, #cursor-ring {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      z-index: 9999;
+      transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    }
+
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #00A8E8;
+      box-shadow: 0 0 10px #00A8E8;
+    }
+
+    #cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(0, 168, 232, 0.5);
+      background: rgba(0, 168, 232, 0.05);
+      margin-top: -14px;
+      margin-left: -14px;
+    }
+
+    .hover-expand #cursor-ring {
+      transform: scale(1.8);
+      background: rgba(0, 168, 232, 0.15);
+      border-color: #FFB703;
+    }
+
+    /* Glassmorphism Cards */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card-hover:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 168, 232, 0.4);
+      box-shadow: 0 25px 50px -12px rgba(0, 168, 232, 0.25);
+    }
+
+    /* Text Gradient */
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #38bdf8 0%, #00A8E8 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .text-gradient-gold {
+      background: linear-gradient(135deg, #fde047 0%, #FFB703 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Scroll Reveal Framework */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070C16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00A8E8;
+    }
+  </style>
+</head>
+
+<body class="antialiased min-h-screen relative overflow-x-hidden selection:bg-brand-cyan selection:text-black">
+
+  <!-- Interactive Custom Following Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Background Ambient Glow Orbs & Blueprint Grid -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-cyan/15 blur-[140px] animate-pulse-glow"></div>
+    <div class="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-brand-yellow/10 blur-[150px] animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+    <div class="absolute bottom-10 left-1/4 w-[500px] h-[500px] rounded-full bg-cyan-900/10 blur-[180px]"></div>
+  </div>
+
+  <!-- Sticky Glass Navigation Header -->
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/85 border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between gap-6">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+        <img src="images/wg_logo_white.png" onerror="this.src='images/wg_logo.png'" alt="White Graphics Advertising Co."
+          class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-slate-300">
+        <a href="index.html" class="hover:text-brand-cyan transition-colors duration-200">Home</a>
+        <a href="index.html#about" class="hover:text-brand-cyan transition-colors duration-200">About</a>
+        <a href="index.html#services" class="hover:text-brand-cyan transition-colors duration-200">Services</a>
+        <a href="works.html" class="text-brand-cyan font-bold border-b-2 border-brand-cyan pb-0.5">Works Gallery</a>
+        <a href="index.html#values" class="hover:text-brand-cyan transition-colors duration-200">Values</a>
+        <a href="index.html#partners" class="hover:text-brand-cyan transition-colors duration-200">Partners</a>
+        <a href="index.html#quote" class="hover:text-brand-cyan transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-4">
+        <a href="index.html#quote"
+          class="px-6 py-3 rounded-full bg-gradient-to-r from-brand-cyan to-cyan-500 text-black font-extrabold text-xs tracking-wider uppercase shadow-lg shadow-brand-cyan/20 hover:shadow-brand-cyan/40 hover:scale-105 transition-all duration-300 flex items-center gap-2">
+          <span>Get a Quote</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-slate-950/95 border-b border-white/10 px-6 py-6 space-y-4 text-center">
+      <a href="index.html" class="block text-slate-200 font-semibold py-2 hover:text-brand-cyan">Home</a>
+      <a href="index.html#about" class="block text-slate-200 font-semibold py-2 hover:text-brand-cyan">About</a>
+      <a href="index.html#services" class="block text-slate-200 font-semibold py-2 hover:text-brand-cyan">Services</a>
+      <a href="works.html" class="block text-brand-cyan font-bold py-2">Works Gallery</a>
+      <a href="index.html#quote" class="block text-slate-200 font-semibold py-2 hover:text-brand-cyan">Contact</a>
+    </div>
+  </nav>
+
+  <main class="space-y-16 pb-20">
+
+    <!-- PAGE HERO BANNER -->
+    <header class="relative pt-12 md:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 backdrop-blur-md mb-6">
+        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-ping"></span>
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">White Graphics Project Portfolio</span>
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+        Our <span class="text-gradient-cyan">Works</span> & <span class="text-gradient-gold">Creations</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto mt-4 leading-relaxed font-normal">
+        Step into the world of White Graphics, where creativity converges with precision. Explore our diverse portfolio showcasing a spectrum of turnkey advertising, 3D signage, printing, vehicle wraps, and trade show installations across Saudi Arabia.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-10" id="filterContainer">
+        <button onclick="filterGallery('all')" class="filter-btn active px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-brand-cyan text-black shadow-lg shadow-brand-cyan/20">All Works (60+)</button>
+        <button onclick="filterGallery('signage')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-brand-cyan hover:text-white">3D Signage</button>
+        <button onclick="filterGallery('print')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-brand-cyan hover:text-white">Commercial Print</button>
+        <button onclick="filterGallery('vehicle')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-brand-cyan hover:text-white">Vehicle Wraps</button>
+        <button onclick="filterGallery('booths')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-brand-cyan hover:text-white">Exhibition Booths</button>
+        <button onclick="filterGallery('tags')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-brand-cyan hover:text-white">Industrial Tags</button>
+      </div>
+    </header>
+
+    <!-- GALLERY GRID SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryGrid">
+        
+        <!-- Item 1: Architectural 3D Signage -->
+        <div class="gallery-card signage group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('images/corporate_signage.png', '3D Corporate Facade Signage', 'High-illuminated acrylic & metal channel letters with cyan backlighting.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="images/corporate_signage.png" alt="3D Corporate Facade" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-cyan uppercase tracking-wider">3D Signage</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-cyan transition-colors">3D Corporate Building Facade</h3>
+            <p class="text-xs text-slate-400">Illuminated architectural channel letters & ACP cladding in Dammam, KSA.</p>
+          </div>
+        </div>
+
+        <!-- Item 2: Luxury Print Suite -->
+        <div class="gallery-card print group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('images/commercial_printing.png', 'Embossed Luxury Print Suite', 'Gold & cyan foil stamping on corporate business cards and stationery.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="images/commercial_printing.png" alt="Embossed Luxury Print Suite" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Commercial Print</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-yellow transition-colors">Executive Embossed Stationery</h3>
+            <p class="text-xs text-slate-400">Foil stamped business cards, letterheads, and brand presentation folders.</p>
+          </div>
+        </div>
+
+        <!-- Item 3: Project 104 -->
+        <div class="gallery-card signage group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-104-768x576.jpeg', 'Commercial Retail Signage', 'High impact acrylic illuminated store signage installation.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-104-768x576.jpeg" alt="Commercial Retail Signage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-cyan uppercase tracking-wider">3D Signage</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-cyan transition-colors">Commercial Store Front Signs</h3>
+            <p class="text-xs text-slate-400">Weatherproof acrylic store frontage and wayfinding graphics.</p>
+          </div>
+        </div>
+
+        <!-- Item 4: Project 105 -->
+        <div class="gallery-card vehicle group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-105-768x576.jpeg', 'Fleet Vehicle Graphic Branding', 'Custom full vinyl wrap branding on commercial fleet trucks.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-105-768x576.jpeg" alt="Fleet Vehicle Branding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Vehicle Wraps</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-yellow transition-colors">Corporate Fleet Graphic Wraps</h3>
+            <p class="text-xs text-slate-400">Automotive cast vinyl full vehicle branding for logistics fleets.</p>
+          </div>
+        </div>
+
+        <!-- Item 5: Project 97 -->
+        <div class="gallery-card booths group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-97-768x576.jpeg', 'Custom Exhibition Stand', 'Turnkey trade show island exhibition booth build.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-97-768x576.jpeg" alt="Exhibition Booth" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-cyan uppercase tracking-wider">Exhibition Booths</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-cyan transition-colors">Trade Show Exhibition Stand</h3>
+            <p class="text-xs text-slate-400">Custom wood, metal, and LED lighting exhibition pavilion in KSA.</p>
+          </div>
+        </div>
+
+        <!-- Item 6: Project 96 -->
+        <div class="gallery-card print group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-96-768x362.jpeg', 'Large Format Wall Banner', 'High-res exterior building wall graphics & vinyl printing.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-96-768x362.jpeg" alt="Large Format Printing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Commercial Print</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-yellow transition-colors">Large Format Wall Graphics</h3>
+            <p class="text-xs text-slate-400">Outdoor flex, banner, and wall graphics printing.</p>
+          </div>
+        </div>
+
+        <!-- Item 7: Project 94 -->
+        <div class="gallery-card tags group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-94-768x576.jpeg', 'Industrial Stainless Steel Nameplate', 'Precision chemical etched and laser engraved metal industrial tags.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-94-768x576.jpeg" alt="Industrial Nameplates" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-cyan uppercase tracking-wider">Industrial Tags</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-cyan transition-colors">Etched Stainless Steel Nameplates</h3>
+            <p class="text-xs text-slate-400">Heavy-duty identification tags for industrial machinery.</p>
+          </div>
+        </div>
+
+        <!-- Item 8: Project 91 -->
+        <div class="gallery-card signage group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-91-768x368.jpeg', 'Wayfinding & Pylon Signage', 'Outdoor roadside wayfinding directional pylon for corporate site.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-91-768x368.jpeg" alt="Wayfinding Pylon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-cyan uppercase tracking-wider">3D Signage</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-cyan transition-colors">Directional Wayfinding Pylon</h3>
+            <p class="text-xs text-slate-400">Steel & aluminum composite structural roadside signage.</p>
+          </div>
+        </div>
+
+        <!-- Item 9: Project 78 -->
+        <div class="gallery-card vehicle group glass-card rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl relative"
+             onclick="openLightbox('https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-78-768x576.jpeg', 'Delivery Fleet Van Branding', 'Full color printed vinyl wrap for commercial service vehicles.')">
+          <div class="h-72 overflow-hidden relative">
+            <img src="https://thewhitegraphics.com/wp-content/uploads/2023/11/Wrk-78-768x576.jpeg" alt="Van Fleet Branding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2">
+            <span class="text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Vehicle Wraps</span>
+            <h3 class="text-lg font-extrabold text-white group-hover:text-brand-yellow transition-colors">Commercial Van Vinyl Wrap</h3>
+            <p class="text-xs text-slate-400">High durability vehicle vinyl wrap with protective UV laminate.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REQUEST QUOTE BANNER -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <div class="glass-card rounded-[3rem] p-8 sm:p-12 border-2 border-brand-cyan/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div class="space-y-2">
+          <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-white">Have a specific project in mind?</h2>
+          <p class="text-slate-300 text-xs sm:text-sm">Our technical production engineers are ready to review your CAD drawings, brief, or specs.</p>
+        </div>
+        <a href="index.html#quote"
+          class="px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-cyan via-cyan-400 to-brand-cyan text-black font-black uppercase tracking-wider text-xs shadow-xl shadow-brand-cyan/25 hover:scale-105 transition-all whitespace-nowrap">
+          Request Quotation →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 z-[10000] hidden bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8">
+    <div class="relative max-w-4xl w-full glass-card rounded-3xl overflow-hidden border border-white/20 shadow-2xl p-6 sm:p-8 space-y-6">
+      
+      <!-- Close Button -->
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl font-bold focus:outline-none">
+        ✕
+      </button>
+
+      <!-- Modal Image -->
+      <div class="h-80 sm:h-[450px] w-full rounded-2xl overflow-hidden border border-white/10 bg-black/50">
+        <img id="lightboxImg" src="" alt="" class="w-full h-full object-contain">
+      </div>
+
+      <!-- Modal Information -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h3 id="lightboxTitle" class="text-xl font-extrabold text-white"></h3>
+          <p id="lightboxDesc" class="text-xs text-slate-300 mt-1"></p>
+        </div>
+        <a id="lightboxBtn" href="https://api.whatsapp.com/send?phone=966502901669" target="_blank"
+          class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-cyan-500 text-black font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all text-center">
+          Inquire About This Project →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950 pt-16 pb-12 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-2 space-y-4">
+          <img src="images/wg_logo_white.png" onerror="this.src='images/wg_logo.png'" alt="White Graphics Advertising Co."
+            class="h-12 sm:h-14 md:h-16 w-auto object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+          <p class="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
+            From Concept to Creation — Turnkey commercial printing, 3D architectural signage, advertising campaigns, and industrial manufacturing solutions in Saudi Arabia.
+          </p>
+          <p class="text-xs text-brand-yellow italic">"We are strong, we make you strong."</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Navigation</h4>
+          <ul class="space-y-2 text-xs font-medium">
+            <li><a href="index.html" class="hover:text-brand-cyan transition-colors">Home</a></li>
+            <li><a href="index.html#about" class="hover:text-brand-cyan transition-colors">About Us</a></li>
+            <li><a href="index.html#services" class="hover:text-brand-cyan transition-colors">Services</a></li>
+            <li><a href="works.html" class="hover:text-brand-cyan transition-colors">Works Gallery</a></li>
+            <li><a href="index.html#quote" class="hover:text-brand-cyan transition-colors">Get a Quote</a></li>
+          </ul>
+        </div>
+
+        <!-- Location & Contact -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Contact Us</h4>
+          <p class="text-xs text-slate-300">Dammam, Kingdom of Saudi Arabia</p>
+          <p class="text-xs text-slate-400">info@thewhitegraphics.com</p>
+          <p class="text-xs text-slate-400">Tel: 013 844 1114</p>
+          <a href="https://api.whatsapp.com/send?phone=966502901669" target="_blank" class="inline-block text-xs font-bold text-brand-cyan hover:underline">
+            Chat on WhatsApp →
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 White Graphics Advertising Co. All Rights Reserved.</p>
+        <p class="text-slate-400">Designed for Modern B2B Brands in KSA.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT FOR INTERACTION, LIGHTBOX & SCROLL ANIMATIONS -->
+  <script>
+    // 1. Lightbox Trigger
+    function openLightbox(imgSrc, title, desc) {
+      document.getElementById('lightboxImg').src = imgSrc;
+      document.getElementById('lightboxTitle').innerText = title;
+      document.getElementById('lightboxDesc').innerText = desc;
+      const text = `Hello White Graphics, I am inquiring about the project: ${encodeURIComponent(title)}`;
+      document.getElementById('lightboxBtn').href = `https://api.whatsapp.com/send?phone=966502901669&text=${text}`;
+      document.getElementById('lightbox').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // 2. Category Gallery Filtering
+    function filterGallery(category) {
+      const cards = document.querySelectorAll('.gallery-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => {
+        b.classList.remove('bg-brand-cyan', 'text-black', 'shadow-lg', 'shadow-brand-cyan/20', 'active');
+        b.classList.add('bg-white/5', 'text-slate-300', 'border', 'border-white/10');
+      });
+
+      event.target.classList.remove('bg-white/5', 'text-slate-300', 'border', 'border-white/10');
+      event.target.classList.add('bg-brand-cyan', 'text-black', 'shadow-lg', 'shadow-brand-cyan/20', 'active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 3. Custom Following Pointer Cursor Effect
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+
+    document.addEventListener('mousemove', (e) => {
+      dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, .glass-card');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hover-expand'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hover-expand'));
+    });
+
+    // 4. Scroll Reveal Framework
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // 5. Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // 6. Motion Graphics Background Engine
+    (function initMotionGraphicsCanvas() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'bg-motion-canvas';
+      canvas.className = 'fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-70';
+      document.body.prepend(canvas);
+
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      let shapes = [];
+      let mouseX = -1000, mouseY = -1000;
+      let lastScrollY = window.scrollY;
+      let scrollVel = 0;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        scrollVel = (currentScroll - lastScrollY) * 0.15;
+        lastScrollY = currentScroll;
+      });
+
+      const PARTICLE_COUNT = Math.min(width < 768 ? 25 : 55, 60);
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 2 + 1,
+          color: Math.random() > 0.3 ? 'rgba(0, 168, 232,' : 'rgba(255, 183, 3,',
+          alpha: Math.random() * 0.5 + 0.2,
+          layer: Math.random() * 0.5 + 0.5
+        });
+      }
+
+      const SHAPE_COUNT = width < 768 ? 4 : 8;
+      for (let i = 0; i < SHAPE_COUNT; i++) {
+        shapes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 35 + 20,
+          rotation: Math.random() * Math.PI * 2,
+          vRot: (Math.random() - 0.5) * 0.008,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
+          color: Math.random() > 0.4 ? 'rgba(0, 168, 232, 0.15)' : 'rgba(255, 183, 3, 0.12)',
+          layer: Math.random() * 0.8 + 0.2
+        });
+      }
+
+      function drawSquare(shape) {
+        ctx.save();
+        ctx.translate(shape.x, shape.y);
+        ctx.rotate(shape.rotation);
+        ctx.strokeStyle = shape.color;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+        ctx.restore();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        scrollVel *= 0.92;
+
+        shapes.forEach(s => {
+          s.rotation += s.vRot;
+          s.x += s.vx;
+          s.y += s.vy - scrollVel * s.layer;
+
+          if (s.x < -50) s.x = width + 50;
+          if (s.x > width + 50) s.x = -50;
+          if (s.y < -50) s.y = height + 50;
+          if (s.y > height + 50) s.y = -50;
+
+          drawSquare(s);
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+
+          p.x += p.vx;
+          p.y += p.vy - scrollVel * p.layer;
+
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const force = (120 - dist) / 120;
+            p.x -= (dx / dist) * force * 1.5;
+            p.y -= (dy / dist) * force * 1.5;
+          }
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.alpha + ')';
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let pdx = p.x - p2.x;
+            let pdy = p.y - p2.y;
+            let pDist = Math.sqrt(pdx * pdx + pdy * pdy);
+
+            if (pDist < 110) {
+              const lineAlpha = (1 - pDist / 110) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 168, 232, ${lineAlpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+
+</html>

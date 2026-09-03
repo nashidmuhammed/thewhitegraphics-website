@@ -165,6 +165,57 @@
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
+
+    /* Infinite Horizontal Logo Marquee Animations - 60FPS Hardware Accelerated */
+    @keyframes logoMarqueeLeft {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+    @keyframes logoMarqueeRight {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+      animation: logoMarqueeLeft 38s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+      animation: logoMarqueeRight 38s linear infinite;
+    }
+    .marquee-container:hover .animate-marquee-left,
+    .marquee-container:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+
+    /* High-Visibility Crisp White Badge Cards - Zero Lag / Maximum Contrast */
+    .partner-logo-card {
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 1.25rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32), 0 2px 4px rgba(0, 0, 0, 0.1);
+      contain: layout paint;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .partner-logo-card:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(0, 168, 232, 0.45), 0 0 0 2px #00A8E8;
+    }
+
+    /* Crisp High-Contrast Logo Images */
+    .partner-logo-img {
+      object-fit: contain;
+      width: auto;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+    .partner-logo-card:hover .partner-logo-img {
+      transform: scale(1.06);
+    }
   </style>
 </head>
 
@@ -788,36 +839,666 @@
         </a>
       </div>
     </section>
-
-    <!-- CLIENT PARTNERS SECTION -->
+        <!-- CLIENT PARTNERS SECTION -->
     <section id="partners" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <div class="glass-card rounded-[3rem] p-8 sm:p-12 border border-white/10 text-center space-y-8">
-        <div>
-          <span class="text-xs font-extrabold tracking-widest text-brand-cyan uppercase">Trusted Across KSA</span>
-          <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-white mt-1">
+      <div class="glass-card rounded-[3rem] p-6 sm:p-12 border border-white/10 text-center space-y-8 relative overflow-hidden">
+        <!-- Background Ambient Glow behind Partners -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-3">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-bold uppercase tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+            Trusted Across KSA & GCC
+          </span>
+          <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight">
             Our Key Client Partners
           </h2>
+          <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-300 font-medium">
+            Over 65+ leading corporations, industrial giants, and prestigious enterprises trust White Graphics for premium advertising & production excellence.
+          </p>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-cyan/40 transition-colors">
-            <span class="font-display text-lg font-black tracking-wider text-slate-200">HENKEL</span>
+        <!-- Marquee Container with Dual Directional Scroll -->
+        <div class="marquee-container relative overflow-hidden rounded-2xl py-4 space-y-6">
+          <!-- Gradient Mask Overlays for Smooth Fading Edges -->
+          <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/90 to-transparent z-20"></div>
+          <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#0f172a] via-[#0f172a]/90 to-transparent z-20"></div>
+
+          <!-- Marquee Row 1 (Scrolling Left - Logos 1 to 33) -->
+          <div class="overflow-hidden flex">
+            <div class="animate-marquee-left gap-4 sm:gap-6 items-center">
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/1.png" alt="Client Partner 1" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/2.png" alt="Client Partner 2" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/3.png" alt="Client Partner 3" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/4.png" alt="Client Partner 4" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/5.png" alt="Client Partner 5" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/6.png" alt="Client Partner 6" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/7.png" alt="Client Partner 7" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/8.png" alt="Client Partner 8" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/9.png" alt="Client Partner 9" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/10.png" alt="Client Partner 10" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/11.png" alt="Client Partner 11" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/12.png" alt="Client Partner 12" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/13.png" alt="Client Partner 13" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/14.png" alt="Client Partner 14" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/15.png" alt="Client Partner 15" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/16.png" alt="Client Partner 16" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/17.png" alt="Client Partner 17" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/18.png" alt="Client Partner 18" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/19.png" alt="Client Partner 19" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/20.png" alt="Client Partner 20" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/21.png" alt="Client Partner 21" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/22.png" alt="Client Partner 22" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/23.png" alt="Client Partner 23" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/24.png" alt="Client Partner 24" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/25.png" alt="Client Partner 25" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/26.png" alt="Client Partner 26" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/27.png" alt="Client Partner 27" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/28.png" alt="Client Partner 28" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/29.png" alt="Client Partner 29" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/30.png" alt="Client Partner 30" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/31.png" alt="Client Partner 31" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/32.png" alt="Client Partner 32" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/33.png" alt="Client Partner 33" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/1.png" alt="Client Partner 1" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/2.png" alt="Client Partner 2" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/3.png" alt="Client Partner 3" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/4.png" alt="Client Partner 4" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/5.png" alt="Client Partner 5" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/6.png" alt="Client Partner 6" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/7.png" alt="Client Partner 7" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/8.png" alt="Client Partner 8" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/9.png" alt="Client Partner 9" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/10.png" alt="Client Partner 10" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/11.png" alt="Client Partner 11" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/12.png" alt="Client Partner 12" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/13.png" alt="Client Partner 13" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/14.png" alt="Client Partner 14" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/15.png" alt="Client Partner 15" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/16.png" alt="Client Partner 16" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/17.png" alt="Client Partner 17" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/18.png" alt="Client Partner 18" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/19.png" alt="Client Partner 19" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/20.png" alt="Client Partner 20" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/21.png" alt="Client Partner 21" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/22.png" alt="Client Partner 22" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/23.png" alt="Client Partner 23" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/24.png" alt="Client Partner 24" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/25.png" alt="Client Partner 25" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/26.png" alt="Client Partner 26" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/27.png" alt="Client Partner 27" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/28.png" alt="Client Partner 28" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/29.png" alt="Client Partner 29" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/30.png" alt="Client Partner 30" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/31.png" alt="Client Partner 31" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/32.png" alt="Client Partner 32" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/33.png" alt="Client Partner 33" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            </div>
           </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-yellow/40 transition-colors">
-            <span class="font-display text-lg font-black tracking-wider text-slate-200">RISAL</span>
+
+          <!-- Marquee Row 2 (Scrolling Right - Logos 34 to 65 + 1 to 3) -->
+          <div class="overflow-hidden flex">
+            <div class="animate-marquee-right gap-4 sm:gap-6 items-center">
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/34.png" alt="Client Partner 34" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/35.png" alt="Client Partner 35" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/36.png" alt="Client Partner 36" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/37.png" alt="Client Partner 37" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/38.png" alt="Client Partner 38" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/39.png" alt="Client Partner 39" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/40.png" alt="Client Partner 40" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/41.png" alt="Client Partner 41" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/42.png" alt="Client Partner 42" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/43.png" alt="Client Partner 43" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/44.png" alt="Client Partner 44" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/45.png" alt="Client Partner 45" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/46.png" alt="Client Partner 46" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/47.png" alt="Client Partner 47" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/48.png" alt="Client Partner 48" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/49.png" alt="Client Partner 49" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/50.png" alt="Client Partner 50" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/51.png" alt="Client Partner 51" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/52.png" alt="Client Partner 52" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/53.png" alt="Client Partner 53" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/54.png" alt="Client Partner 54" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/55.png" alt="Client Partner 55" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/56.png" alt="Client Partner 56" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/57.png" alt="Client Partner 57" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/58.png" alt="Client Partner 58" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/59.png" alt="Client Partner 59" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/60.png" alt="Client Partner 60" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/61.png" alt="Client Partner 61" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/62.png" alt="Client Partner 62" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/63.png" alt="Client Partner 63" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/64.png" alt="Client Partner 64" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/65.png" alt="Client Partner 65" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/1.png" alt="Client Partner 1" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/2.png" alt="Client Partner 2" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/3.png" alt="Client Partner 3" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/34.png" alt="Client Partner 34" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/35.png" alt="Client Partner 35" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/36.png" alt="Client Partner 36" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/37.png" alt="Client Partner 37" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/38.png" alt="Client Partner 38" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/39.png" alt="Client Partner 39" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/40.png" alt="Client Partner 40" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/41.png" alt="Client Partner 41" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/42.png" alt="Client Partner 42" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/43.png" alt="Client Partner 43" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/44.png" alt="Client Partner 44" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/45.png" alt="Client Partner 45" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/46.png" alt="Client Partner 46" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/47.png" alt="Client Partner 47" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/48.png" alt="Client Partner 48" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/49.png" alt="Client Partner 49" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/50.png" alt="Client Partner 50" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/51.png" alt="Client Partner 51" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/52.png" alt="Client Partner 52" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/53.png" alt="Client Partner 53" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/54.png" alt="Client Partner 54" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/55.png" alt="Client Partner 55" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/56.png" alt="Client Partner 56" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/57.png" alt="Client Partner 57" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/58.png" alt="Client Partner 58" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/59.png" alt="Client Partner 59" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/60.png" alt="Client Partner 60" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/61.png" alt="Client Partner 61" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/62.png" alt="Client Partner 62" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/63.png" alt="Client Partner 63" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/64.png" alt="Client Partner 64" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/65.png" alt="Client Partner 65" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/1.png" alt="Client Partner 1" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/2.png" alt="Client Partner 2" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            <div class="partner-logo-card group flex-shrink-0 w-44 h-24 sm:w-56 sm:h-28 p-3 sm:p-4 flex items-center justify-center cursor-pointer">
+              <img src="images/OUR CLIENTS LOGOS/3.png" alt="Client Partner 3" loading="lazy" decoding="async" class="partner-logo-img max-h-16 sm:max-h-20 max-w-[90%] object-contain" />
+            </div>
+            </div>
           </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-cyan/40 transition-colors">
-            <span class="font-display text-lg font-black tracking-wider text-slate-200">SYNTHOMER</span>
+        </div>
+
+        <!-- View All Toggle Option / Stats Bar -->
+        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 relative z-10">
+          <div class="flex items-center gap-6">
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> 65+ Verified Clients</span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-cyan"></span> 100% Satisfaction</span>
           </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-yellow/40 transition-colors">
-            <span class="font-display text-lg font-black tracking-wider text-slate-200">ARABIAN FAL</span>
+          <button id="toggle-grid-btn" onclick="togglePartnersGrid()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-brand-cyan/40 hover:bg-white/10 text-white font-semibold transition-all">
+            <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span id="toggle-grid-text">View All 65 Logos Grid</span>
+          </button>
+        </div>
+
+        <!-- Collapsible Full Logos Grid (Hidden by Default) -->
+        <div id="full-partners-grid" class="hidden grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 pt-6 border-t border-white/10 transition-all duration-500 relative z-10">
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/1.png" alt="Client Partner 1" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
           </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-cyan/40 transition-colors">
-            <span class="font-display text-lg font-black tracking-wider text-slate-200">SUDHEER RENTALS</span>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/2.png" alt="Client Partner 2" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/3.png" alt="Client Partner 3" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/4.png" alt="Client Partner 4" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/5.png" alt="Client Partner 5" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/6.png" alt="Client Partner 6" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/7.png" alt="Client Partner 7" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/8.png" alt="Client Partner 8" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/9.png" alt="Client Partner 9" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/10.png" alt="Client Partner 10" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/11.png" alt="Client Partner 11" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/12.png" alt="Client Partner 12" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/13.png" alt="Client Partner 13" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/14.png" alt="Client Partner 14" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/15.png" alt="Client Partner 15" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/16.png" alt="Client Partner 16" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/17.png" alt="Client Partner 17" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/18.png" alt="Client Partner 18" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/19.png" alt="Client Partner 19" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/20.png" alt="Client Partner 20" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/21.png" alt="Client Partner 21" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/22.png" alt="Client Partner 22" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/23.png" alt="Client Partner 23" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/24.png" alt="Client Partner 24" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/25.png" alt="Client Partner 25" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/26.png" alt="Client Partner 26" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/27.png" alt="Client Partner 27" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/28.png" alt="Client Partner 28" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/29.png" alt="Client Partner 29" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/30.png" alt="Client Partner 30" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/31.png" alt="Client Partner 31" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/32.png" alt="Client Partner 32" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/33.png" alt="Client Partner 33" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/34.png" alt="Client Partner 34" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/35.png" alt="Client Partner 35" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/36.png" alt="Client Partner 36" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/37.png" alt="Client Partner 37" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/38.png" alt="Client Partner 38" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/39.png" alt="Client Partner 39" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/40.png" alt="Client Partner 40" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/41.png" alt="Client Partner 41" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/42.png" alt="Client Partner 42" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/43.png" alt="Client Partner 43" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/44.png" alt="Client Partner 44" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/45.png" alt="Client Partner 45" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/46.png" alt="Client Partner 46" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/47.png" alt="Client Partner 47" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/48.png" alt="Client Partner 48" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/49.png" alt="Client Partner 49" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/50.png" alt="Client Partner 50" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/51.png" alt="Client Partner 51" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/52.png" alt="Client Partner 52" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/53.png" alt="Client Partner 53" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/54.png" alt="Client Partner 54" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/55.png" alt="Client Partner 55" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/56.png" alt="Client Partner 56" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/57.png" alt="Client Partner 57" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/58.png" alt="Client Partner 58" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/59.png" alt="Client Partner 59" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/60.png" alt="Client Partner 60" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/61.png" alt="Client Partner 61" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/62.png" alt="Client Partner 62" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/63.png" alt="Client Partner 63" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/64.png" alt="Client Partner 64" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
+          </div>
+          <div class="partner-logo-card group p-3 sm:p-4 flex items-center justify-center h-24 sm:h-28 cursor-pointer">
+            <img src="images/OUR CLIENTS LOGOS/65.png" alt="Client Partner 65" loading="lazy" decoding="async" class="partner-logo-img max-h-14 sm:max-h-16 max-w-[90%] object-contain" />
           </div>
         </div>
       </div>
     </section>
+
+
 
     <!-- TESTIMONIAL SECTION -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
@@ -1292,8 +1973,20 @@
         requestAnimationFrame(animate);
       }
 
-      animate();
-    })();
+      })();
+
+    function togglePartnersGrid() {
+      const grid = document.getElementById('full-partners-grid');
+      const btnText = document.getElementById('toggle-grid-text');
+      if (!grid || !btnText) return;
+      if (grid.classList.contains('hidden')) {
+        grid.classList.remove('hidden');
+        btnText.textContent = 'Collapse Grid View';
+      } else {
+        grid.classList.add('hidden');
+        btnText.textContent = 'View All 65 Logos Grid';
+      }
+    }
   </script>
 </body>
 

@@ -155,6 +155,16 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #00A8E8;
     }
+
+    /* Hide scrollbars for smooth touch carousels */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
   </style>
 </head>
 
@@ -224,8 +234,63 @@
 
   <main class="space-y-24 md:space-y-36 pb-20">
 
+    <!-- ================================================================= -->
+    <!-- TOP 3-COLUMN CINEMATIC VIDEO SHOWCASE (ABOVE HERO)                -->
+    <!-- ================================================================= -->
+    <section id="brand-showreel" class="relative pt-4 md:pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      
+      <!-- 3-Column Video Matrix (Horizontal Snap-Scroll on Mobile/Tablet, 3-Col Grid on Desktop) -->
+      <div id="videoShowreelScroll" class="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 pb-3 md:pb-0">
+        
+        <!-- Video 1 -->
+        <div class="video-showcase-card flex-shrink-0 w-[78vw] sm:w-[52vw] md:w-auto snap-center group relative rounded-3xl lg:rounded-[2rem] overflow-hidden border border-white/10 bg-slate-950 shadow-2xl hover:border-brand-cyan/40 transition-all duration-500 aspect-[9/14] md:aspect-[9/14] lg:aspect-[9/13] max-h-[520px]">
+          <video class="showcase-video w-full h-full object-cover transform scale-[1.01] group-hover:scale-105 transition-transform duration-700"
+            autoplay muted loop playsinline preload="metadata" poster="images/corporate_signage.png">
+            <source src="videos/test1.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-showcase-card flex-shrink-0 w-[78vw] sm:w-[52vw] md:w-auto snap-center group relative rounded-3xl lg:rounded-[2rem] overflow-hidden border border-white/10 bg-slate-950 shadow-2xl hover:border-brand-yellow/40 transition-all duration-500 aspect-[9/14] md:aspect-[9/14] lg:aspect-[9/13] max-h-[520px]">
+          <video class="showcase-video w-full h-full object-cover transform scale-[1.01] group-hover:scale-105 transition-transform duration-700"
+            autoplay muted loop playsinline preload="metadata" poster="images/commercial_printing.png">
+            <source src="videos/test2.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-showcase-card flex-shrink-0 w-[78vw] sm:w-[52vw] md:w-auto snap-center group relative rounded-3xl lg:rounded-[2rem] overflow-hidden border border-white/10 bg-slate-950 shadow-2xl hover:border-cyan-300/40 transition-all duration-500 aspect-[9/14] md:aspect-[9/14] lg:aspect-[9/13] max-h-[520px]">
+          <video class="showcase-video w-full h-full object-cover transform scale-[1.01] group-hover:scale-105 transition-transform duration-700"
+            autoplay muted loop playsinline preload="metadata" poster="images/corporate_signage.png">
+            <source src="videos/test3.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+
+      <!-- Mobile Carousel Pagination Indicators -->
+      <div id="videoCarouselDots" class="flex md:hidden items-center justify-center gap-2 pt-2">
+        <button type="button" aria-label="Go to video 1" data-index="0" class="video-dot w-6 h-1.5 rounded-full bg-brand-cyan transition-all duration-300"></button>
+        <button type="button" aria-label="Go to video 2" data-index="1" class="video-dot w-2 h-1.5 rounded-full bg-white/20 transition-all duration-300"></button>
+        <button type="button" aria-label="Go to video 3" data-index="2" class="video-dot w-2 h-1.5 rounded-full bg-white/20 transition-all duration-300"></button>
+      </div>
+
+      <!-- Explore / Scroll Down Bridge Button -->
+      <div class="flex justify-center pt-5 pb-1">
+        <a href="#hero-main" 
+          class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 border border-white/10 hover:border-brand-cyan/40 text-slate-300 hover:text-brand-cyan text-xs font-bold tracking-wider uppercase backdrop-blur-md shadow-lg shadow-black/40 transition-all duration-300 group">
+          <span>Explore Services</span>
+          <span class="w-5 h-5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center group-hover:bg-brand-cyan/20 transition-colors">
+            <svg class="w-3 h-3 text-brand-cyan animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
     <!-- HERO SECTION -->
-    <header class="relative pt-12 md:pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <header id="hero-main" class="relative !mt-6 md:!mt-10 pt-2 md:pt-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
         <!-- Left Content -->
@@ -244,13 +309,22 @@
             We transform brands through captivating visuals and expert advertising across Saudi Arabia. <strong class="text-white">Signage, commercial printing, exhibition booths, vehicle wraps, corporate identity & industrial fabrication.</strong>
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
             <a href="#quote"
-              class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-cyan via-cyan-400 to-brand-cyan text-black font-black tracking-wider uppercase text-sm shadow-xl shadow-brand-cyan/25 hover:scale-105 transition-all duration-300 text-center">
-              Get a Quote →
+              class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-gradient-to-r from-brand-cyan via-cyan-400 to-brand-cyan text-black font-black tracking-wider uppercase text-sm shadow-xl shadow-brand-cyan/25 hover:scale-105 transition-all duration-300 text-center flex items-center justify-center gap-2">
+              <span>Get a Quote</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=966502901669&text=Hello%20White%20Graphics,%20I%20would%20like%20to%20inquire%20about%20your%20advertising%20and%20signage%20services."
+              target="_blank" rel="noopener noreferrer"
+              class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm tracking-wide shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105 transition-all duration-300 text-center flex items-center justify-center gap-2">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              <span>WhatsApp Direct</span>
             </a>
             <a href="#about"
-              class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 border border-white/15 text-white font-bold text-sm hover:bg-white/10 hover:border-white/30 transition-all text-center backdrop-blur-md">
+              class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white/5 border border-white/15 text-white font-bold text-sm hover:bg-white/10 hover:border-white/30 transition-all text-center backdrop-blur-md">
               About Us
             </a>
           </div>
@@ -966,7 +1040,120 @@
       });
     }
 
-    // 5. High-Performance Interactive Motion Graphics Canvas Background Engine
+    // 5. Cinematic 3-Column Video Showcase Controller
+    (function initThreeColumnShowreel() {
+      const cards = document.querySelectorAll('.video-showcase-card');
+      if (!cards.length) return;
+
+      cards.forEach(card => {
+        const video = card.querySelector('.showcase-video');
+        const muteBtn = card.querySelector('.video-mute-btn');
+        const muteIconOff = card.querySelector('.mute-icon-off');
+        const muteIconOn = card.querySelector('.mute-icon-on');
+        const playBtn = card.querySelector('.video-play-btn');
+        const pauseIcon = card.querySelector('.play-icon-pause');
+        const playIcon = card.querySelector('.play-icon-play');
+
+        if (!video) return;
+
+        // Mute / Unmute
+        if (muteBtn) {
+          muteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            video.muted = !video.muted;
+            if (video.muted) {
+              muteIconOff?.classList.remove('hidden');
+              muteIconOn?.classList.add('hidden');
+            } else {
+              // Mute other videos so audio doesn't collide
+              document.querySelectorAll('.showcase-video').forEach(v => {
+                if (v !== video) v.muted = true;
+              });
+              document.querySelectorAll('.mute-icon-off').forEach(i => i.classList.remove('hidden'));
+              document.querySelectorAll('.mute-icon-on').forEach(i => i.classList.add('hidden'));
+
+              muteIconOff?.classList.add('hidden');
+              muteIconOn?.classList.remove('hidden');
+            }
+          });
+        }
+
+        // Play / Pause
+        if (playBtn) {
+          playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+              video.play();
+              pauseIcon?.classList.remove('hidden');
+              playIcon?.classList.add('hidden');
+              delete playBtn.dataset.manuallyPaused;
+            } else {
+              video.pause();
+              pauseIcon?.classList.add('hidden');
+              playIcon?.classList.remove('hidden');
+              playBtn.dataset.manuallyPaused = 'true';
+            }
+          });
+        }
+      });
+
+      // Performance Optimization: Auto-pause when off-screen
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const video = entry.target;
+            const playBtn = video.closest('.video-showcase-card')?.querySelector('.video-play-btn');
+            const pauseIcon = video.closest('.video-showcase-card')?.querySelector('.play-icon-pause');
+            const playIcon = video.closest('.video-showcase-card')?.querySelector('.play-icon-play');
+
+            if (!entry.isIntersecting && !video.paused) {
+              video.pause();
+              pauseIcon?.classList.add('hidden');
+              playIcon?.classList.remove('hidden');
+            } else if (entry.isIntersecting && video.paused && !playBtn?.dataset.manuallyPaused) {
+              video.play().catch(() => {});
+              pauseIcon?.classList.remove('hidden');
+              playIcon?.classList.add('hidden');
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.showcase-video').forEach(v => observer.observe(v));
+      }
+
+      // Mobile Carousel Indicator Dots Sync
+      const scrollContainer = document.getElementById('videoShowreelScroll');
+      const dots = document.querySelectorAll('.video-dot');
+
+      if (scrollContainer && dots.length) {
+        // Dot click -> scroll to corresponding card
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.dataset.index, 10);
+            if (cards[index]) {
+              cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+          });
+        });
+
+        // Scroll listener -> update active dot pill
+        scrollContainer.addEventListener('scroll', () => {
+          const scrollLeft = scrollContainer.scrollLeft;
+          const cardWidth = cards[0]?.offsetWidth || 1;
+          const activeIndex = Math.min(Math.max(0, Math.round(scrollLeft / (cardWidth + 16))), cards.length - 1);
+
+          dots.forEach((dot, idx) => {
+            if (idx === activeIndex) {
+              dot.className = 'video-dot w-6 h-1.5 rounded-full bg-brand-cyan transition-all duration-300';
+            } else {
+              dot.className = 'video-dot w-2 h-1.5 rounded-full bg-white/20 transition-all duration-300';
+            }
+          });
+        }, { passive: true });
+      }
+    })();
+
+    // 6. High-Performance Interactive Motion Graphics Canvas Background Engine
     (function initMotionGraphicsCanvas() {
       const canvas = document.createElement('canvas');
       canvas.id = 'bg-motion-canvas';
@@ -1091,12 +1278,12 @@
             let pDist = Math.sqrt(pdx * pdx + pdy * pdy);
 
             if (pDist < 110) {
-              const lineAlpha = (1 - pDist / 110) * 0.15;
+              const lineAlpha = (1 - pDist / 110) * 0.45; // Increased from 0.15 for brighter visibility
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(p2.x, p2.y);
               ctx.strokeStyle = `rgba(0, 168, 232, ${lineAlpha})`;
-              ctx.lineWidth = 0.8;
+              ctx.lineWidth = 1.2; // Increased from 0.8 for thicker bonds
               ctx.stroke();
             }
           }

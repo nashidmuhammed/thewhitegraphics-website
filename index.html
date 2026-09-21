@@ -1542,23 +1542,23 @@
             <!-- Direct Contact Box -->
             <div class="space-y-3 pt-2 text-xs text-slate-300 border-t border-white/10">
               <p class="flex items-center gap-3">
-                <span class="text-brand-cyan font-bold">Location:</span> Dammam, Kingdom of Saudi Arabia
+                <span class="text-brand-cyan font-bold min-w-[75px]">Location:</span> <span>Dammam, Kingdom of Saudi Arabia</span>
               </p>
               <p class="flex items-center gap-3">
-                <span class="text-brand-cyan font-bold">Email:</span> info@thewhitegraphics.com
+                <span class="text-brand-cyan font-bold min-w-[75px]">Email:</span> <a href="mailto:info@thewhitegraphics.com" class="hover:text-brand-cyan transition-colors font-semibold text-white">info@thewhitegraphics.com</a>
               </p>
               <p class="flex items-center gap-3">
-                <span class="text-brand-cyan font-bold">Telephone:</span> 013 844 1114 (+966 13 844 1114)
+                <span class="text-brand-cyan font-bold min-w-[75px]">Telephone:</span> <a href="tel:+966138441114" class="hover:text-brand-cyan transition-colors">013 844 1114 (+966 13 844 1114)</a>
               </p>
               <p class="flex items-center gap-3">
-                <span class="text-brand-yellow font-bold">WhatsApp:</span> +966 50 290 1669 / +966 57 562 0715
+                <span class="text-emerald-400 font-bold min-w-[75px]">WhatsApp:</span> <span>+966 50 290 1669 / +966 57 562 0715 <span class="text-[10px] text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 ml-1 font-semibold">Optional</span></span>
               </p>
             </div>
           </div>
 
           <!-- Right Interactive Form -->
           <div class="lg:col-span-7">
-            <form onsubmit="sendQuote(event)" class="space-y-4">
+            <form onsubmit="sendQuoteEmail(event)" class="space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Your Name *</label>
@@ -1601,11 +1601,18 @@
                   class="w-full px-5 py-4 bg-slate-900/80 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan transition-colors text-sm resize-none"></textarea>
               </div>
 
-              <button type="submit"
-                class="w-full py-4 rounded-2xl bg-gradient-to-r from-brand-cyan via-cyan-400 to-brand-cyan text-black font-black uppercase tracking-widest text-sm shadow-xl shadow-brand-cyan/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-                Send Request via WhatsApp
-              </button>
+              <!-- Submit Action Button: Strictly Email to info@thewhitegraphics.com -->
+              <div class="pt-2 space-y-2">
+                <button type="submit"
+                  class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-brand-cyan via-cyan-400 to-brand-cyan text-black font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-brand-cyan/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3">
+                  <svg class="w-5 h-5 fill-none stroke-black" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span>Send Request via Email</span>
+                </button>
+                <p class="text-xs text-slate-400 text-center pt-1 flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Submits directly to <strong class="text-white font-semibold">info@thewhitegraphics.com</strong> for prompt engineering response.
+                </p>
+              </div>
             </form>
           </div>
 
@@ -1666,19 +1673,110 @@
     </div>
   </footer>
 
+  <!-- OPTIONAL FLOATING WHATSAPP PLUGIN / QUICK CONTACT WIDGET -->
+  <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <!-- WhatsApp Popover Card -->
+    <div id="wa-popover" class="hidden mb-1 w-72 p-4 rounded-2xl bg-slate-900/95 border border-emerald-500/30 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-300 transform scale-95 opacity-0 origin-bottom-right">
+      <div class="flex items-center gap-3 pb-3 border-b border-white/10">
+        <div class="relative">
+          <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 font-bold text-sm">WG</div>
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white">White Graphics KSA</h4>
+          <p class="text-[10px] text-emerald-400 font-medium flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online Instant Support
+          </p>
+        </div>
+        <button onclick="toggleWaWidget()" class="ml-auto text-slate-400 hover:text-white p-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p class="text-xs text-slate-300 py-3 leading-relaxed">
+        Looking for quick answers? Chat directly with our sales or support team on WhatsApp:
+      </p>
+      <div class="space-y-2">
+        <a href="https://api.whatsapp.com/send?phone=966502901669&text=Hello%20White%20Graphics,%20I%20have%20an%20inquiry." target="_blank"
+          class="w-full py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-between transition-colors shadow-md shadow-emerald-500/20">
+          <span>+966 50 290 1669 (Sales)</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=966575620715&text=Hello%20White%20Graphics,%20I%20have%20an%20inquiry." target="_blank"
+          class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-between border border-white/10 transition-colors">
+          <span>+966 57 562 0715 (Support)</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Trigger Button -->
+    <button onclick="toggleWaWidget()" aria-label="WhatsApp Quick Contact"
+      class="p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-xl shadow-emerald-500/30 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative group">
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-950 rounded-full animate-ping"></span>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-950 rounded-full"></span>
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </button>
+  </div>
+
   <!-- JAVASCRIPT FOR INTERACTION & SCROLL ANIMATIONS -->
   <script>
-    // 1. WhatsApp Quote Link Dispatcher
-    function sendQuote(e) {
-      e.preventDefault();
+    // 1. Quotation Request Handlers (Primary: Email to info@thewhitegraphics.com, Secondary: WhatsApp)
+    function sendQuoteEmail(e) {
+      if (e) e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const company = document.getElementById('company').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const service = document.getElementById('service').value;
       const msg = document.getElementById('message').value.trim();
 
+      const subject = `Quotation Request: ${service} - ${name || 'Customer'}`;
+      const body = `White Graphics Quotation Request\n\n` +
+        `Name: ${name}\n` +
+        `Company: ${company || 'N/A'}\n` +
+        `Phone / Contact: ${phone}\n` +
+        `Service Requested: ${service}\n\n` +
+        `Project Specifications:\n${msg || 'No additional details provided.'}\n\n` +
+        `--\nSent from www.thewhitegraphics.com`;
+
+      window.location.href = `mailto:info@thewhitegraphics.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    function sendQuoteWhatsApp(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const msg = document.getElementById('message').value.trim();
+
+      if (!name || !phone) {
+        alert('Please fill in your Name and Phone number before starting WhatsApp chat.');
+        document.getElementById('name').focus();
+        return;
+      }
+
       const text = `Hello White Graphics,%0A%0AI would like a quotation for ${encodeURIComponent(service)}.%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company)}%0APhone: ${encodeURIComponent(phone)}%0AProject Details: ${encodeURIComponent(msg)}`;
       window.open(`https://api.whatsapp.com/send?phone=966502901669&text=${text}`, '_blank');
+    }
+
+    function toggleWaWidget() {
+      const popover = document.getElementById('wa-popover');
+      if (!popover) return;
+      if (popover.classList.contains('hidden')) {
+        popover.classList.remove('hidden');
+        setTimeout(() => {
+          popover.classList.remove('scale-95', 'opacity-0');
+          popover.classList.add('scale-100', 'opacity-100');
+        }, 10);
+      } else {
+        popover.classList.remove('scale-100', 'opacity-100');
+        popover.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+          popover.classList.add('hidden');
+        }, 300);
+      }
     }
 
     // 2. Custom Following Pointer Cursor Effect
